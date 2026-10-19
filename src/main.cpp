@@ -1,24 +1,27 @@
 #include "scop.hpp"
 #include <iostream>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "Object.hpp"
+#include "proto.hpp"
 
-int main()
+int errtype;
+
+int main(int ac, char **av)
 {
-	GLFWwindow* window;
-
-    if (!glfwInit())
+	errtype = 0;
+	Object obj;
+	
+	try 
 	{
-		std::cout << "failure to start GLFW." << std::endl;
-		return 1;
+		check_args(ac, av);
+		parse_obj(obj, av[1]);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Error catch" << std::endl;
+		return (manage_error(errtype));
 	}
 
-	window = glfwCreateWindow(640, 480, "New Window", NULL, NULL);
-
-	while (!glfwWindowShouldClose(window))
-	{
-		glfwPollEvents();
-	}
-	glfwTerminate();
-	std::cout << "done" << std::endl;
-    return 0;
+	obj.debugPrintObject();
 }
