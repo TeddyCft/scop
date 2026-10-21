@@ -21,13 +21,30 @@ Material::Material(const Material &copy)
 
 //Default constructor
 Material::Material(void)// : args(0), ...
-{}
+{
+	this->_name = "";
+
+	t_clr clr;
+	clr.r = 0;
+	clr.g = 0;
+	clr.b = 0;
+
+	this->_ka = clr;
+	this->_kd = clr;
+	this->_ks = clr;
+	this->_ke = clr;
+
+	this->_d = 0;
+	this->_ns = 0;
+	this->_ni = 0;
+	this->_illum = 0;
+}
 
 //Destructor
 Material::~Material(void)
 {}
 
-const std::string	&Material::getname()
+std::string	&Material::getname()
 { return (this->_name); }
 
 void				Material::setname(std::string name)
@@ -80,3 +97,24 @@ const int	&Material::getIllum()
 
 void		Material::setIllum(int i)
 { this->_illum = i; }
+
+std::string clrToStr(t_clr clr)
+{
+	std::string r = std::to_string(clr.r);
+	std::string g = std::to_string(clr.g);
+	std::string b = std::to_string(clr.b);
+	return (r + " " + g + " " + b);
+}
+
+void		Material::debugPrintMtl()
+{
+	std::cout << "[" << this->_name << "]" << std::endl;
+	std::cout << "[d] opacity : " << this->_d << std::endl;
+	std::cout << "[ka] ambient color : " << clrToStr(this->_ka) << std::endl;
+	std::cout << "[kd] diffuse color : " << clrToStr(this->_kd) << std::endl;
+	std::cout << "[ks] specular color : " << clrToStr(this->_ks) << std::endl;
+	std::cout << "[ke] emitted color : " << clrToStr(this->_ke) << std::endl;
+	std::cout << "[ns] specular shine : " << this->_ns << std::endl;
+	std::cout << "[ni] optical refraction : " << this->_ni << std::endl;
+	std::cout << "[illum] : " << this->_illum << std::endl;
+}

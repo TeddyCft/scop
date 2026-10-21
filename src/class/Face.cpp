@@ -40,3 +40,9 @@ const int						&Face::getValue(size_t index, e_vertface type)
 			return this->_vertface[index].vertex;
 	}
 }
+
+const std::string				&Face::getMtl()
+{ return (this->_mtl); }
+
+void							Face::setMtl(std::string mtl)
+{ this->_mtl = mtl; }

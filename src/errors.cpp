@@ -16,7 +16,8 @@ int manage_error(int errtype)
 		"Error in file concerning faces",
 		"Cant open file",
 		"File is empty",
-		"Error in mtl lib content"
+		"Error in mtl lib content",
+		"Error with mtl name in obj file"
 	};
 
 	std::cerr << "Error : " << errs[errtype] << std::endl;

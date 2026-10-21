@@ -14,6 +14,7 @@ FILES =		main\
 			errors\
 			parsing/geometry\
 			parsing/mtl\
+			parsing/values\
 			parsing/utils
 
 CLASS		=	Face\

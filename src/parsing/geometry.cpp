@@ -99,6 +99,8 @@ void parse_face(Object &obj, std::string line)
 		errtype = ERR_FILE_FACE;
 		throw(std::exception());
 	}
+	if (obj.getCurrMtl() != "")
+		face.setMtl(obj.getCurrMtl());
 	obj.addFace(face);
 }
 

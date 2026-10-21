@@ -5,7 +5,15 @@
 Object	&Object::operator=(const Object &og)
 {
 	this->_vertices = og._vertices;
+	this->_vCount = og._vCount;
+	this->_vNorm = og._vNorm;
+	this->_vnCount = og._vnCount;
+	this->_vText = og._vText;
+	this->_vtCount = og._vtCount;
 	this->_faces = og._faces;
+	this->_facesCount = og._facesCount;
+	this->_currMtl = og._currMtl;
+	this->_mtllib = og._mtllib;
 	return (*this);
 }
 
@@ -21,7 +29,9 @@ Object::Object(void)
 	this->_vCount = 0;
 	this->_vnCount = 0;
 	this->_vtCount = 0;
-	this->_name = "";
+	this->_facesCount = 0;
+	this->_name = "";	
+	this->_currMtl = "";
 }
 
 //Destructor
@@ -123,6 +133,9 @@ const Face &Object::getFace(size_t index)
 void Object::addFace(Face face)
 { this->_faces.push_back(face); }
 
+size_t Object::getFaceCount()
+{ return(this->_faces.size()); }
+
 const std::string	&Object::getCurrMtl()
 { return(this->_currMtl); }
 
@@ -178,5 +191,12 @@ void Object::debugPrintObject()
 				std::cout << "/" << vf.normal;
 			}
 		std::cout << std::endl;
+	}
+
+	for (size_t i = 0; i < this->_mtllib.size(); i++)
+	{
+		if (i == 0)
+			std::cout << "Material lib :" << std::endl;
+		this->_mtllib[i].debugPrintMtl();
 	}
 }

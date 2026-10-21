@@ -61,4 +61,5 @@ void parse_obj(Object &obj, std::string filepath)
 		errtype = ERR_FILE_EMPTY;
 		throw(std::exception());
 	}
+	checkValues(obj);
 }

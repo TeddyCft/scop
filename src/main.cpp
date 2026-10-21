@@ -22,6 +22,4 @@ int main(int ac, char **av)
 		std::cerr << "Error catch" << std::endl;
 		return (manage_error(errtype));
 	}
-
-	obj.debugPrintObject();
 }

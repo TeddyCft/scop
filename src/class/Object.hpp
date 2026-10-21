@@ -25,7 +25,7 @@ class Object
 	size_t				_vtCount;
 
 	std::vector<Face>	_faces;
-
+	size_t				_facesCount;
 	std::string			_currMtl;
 	
 	std::vector<Material> _mtllib;
@@ -52,6 +52,7 @@ class Object
 
 	const Face					&getFace(size_t index);
 	void						addFace(Face face);
+	size_t						getFaceCount();
 
 	const std::string			&getCurrMtl();
 	void						setCurrMtl(std::string name);

@@ -13,7 +13,8 @@ typedef enum t_ErrTypes
 	ERR_FILE_FACE,
 	ERR_FILE_OPEN,
 	ERR_FILE_EMPTY,
-	ERR_MTL_CONTENT
+	ERR_MTL_CONTENT,
+	ERR_MTL_NAME
 } e_ErrTypes;
 
 #endif

@@ -124,7 +124,6 @@ std::string buildpath(std::string path)
 void parse_mtllib(Object &obj, std::string path)
 {
 	path = buildpath(path);
-	std::cerr << "path = " << path << std::endl;
 	std::ifstream 	lib(path);
 	if (!lib)
 	{
@@ -145,6 +144,24 @@ void parse_mtllib(Object &obj, std::string path)
 
 void set_currmtl(Object &obj, std::string line)
 {
-	(void) obj;
-	(void) line;
+	std::istringstream	iss(line);
+	std::string 		str;
+
+	iss >> str;
+	if (!(iss >> str))
+	{
+		errtype = ERR_MTL_NAME;
+		throw(std::exception());
+	}
+	for (size_t i = 0; i < obj.getMtl().size(); i++)
+	{
+		Material mtl = obj.getMtl(i);
+		if (str == mtl.getname())
+		{
+			obj.setCurrMtl(str);
+			return;
+		}
+	}
+	errtype = ERR_MTL_NAME;
+	throw(std::exception());
 }

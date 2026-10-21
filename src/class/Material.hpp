@@ -60,8 +60,8 @@ class Material
 
 	// get/set 
 
-	const std::string	&getname();
-	void				setname(std::string name);
+	std::string	&getname();
+	void		setname(std::string name);
 
 	const t_clr	&getKa();
 	void		setKa(t_clr clr);
@@ -80,6 +80,8 @@ class Material
 	void		setNi(float f);
 	const int	&getIllum();
 	void		setIllum(int i);
+
+	void		debugPrintMtl();
 	
 	Material(void);
 	Material(const Material &copy);
